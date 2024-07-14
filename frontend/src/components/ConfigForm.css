@@ -1,0 +1,75 @@
+.config-form-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+  
+  .config-form {
+    flex: 1;
+    margin-right: 2rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .submit-button {
+    padding: 0.75rem 1.5rem;
+    background-color:#0a3b70;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+  }
+  
+  .code-display {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .code-display pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .advanced-button {
+    margin: 10px 0;
+    padding: 10px 15px;
+    background-color: #0a3b70;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+  }
+  
+
+  .advanced-button:hover, .submit-button:hover {
+    background-color: #05274b;
+  }
+
+  .edit-text-button {
+    padding: 0.20rem 0.5rem;
+    background-color:#0a3b70;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+  }
+  

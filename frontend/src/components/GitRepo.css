@@ -1,0 +1,124 @@
+/* .analyze-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+} */
+
+.analyze-container h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+.analyze-container input {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 300px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}
+
+.loading-bar {
+    margin-top: 10px;
+}
+
+.analysis-results {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.analysis-results h2 {
+    font-size: 1.5em;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.analysis-results p {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.folder-structure {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.folder-structure h3 {
+    font-size: 1.5em;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.folder-structure ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+.folder-structure li {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #555;
+}
+
+.folder-name {
+    cursor: pointer;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.folder-name:hover {
+    text-decoration: underline;
+}
+
+.folder-content {
+    margin-left: 20px;
+}
+
+/* Tab styles */
+.tab-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tab {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tab:hover {
+    background-color: #0056b3;
+}
+
+.tab.active {
+    background-color: #0056b3;
+}

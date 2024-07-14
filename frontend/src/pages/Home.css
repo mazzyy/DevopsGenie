@@ -1,0 +1,79 @@
+.homepage {
+    text-align: center;
+  }
+  
+  .hero-section {
+    background: linear-gradient(90deg, #4b6cb7, #182848);
+    color: white;
+    padding: 50px 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 3em;
+    margin: 0.5em 0;
+  }
+  
+  .hero-section p {
+    font-size: 1.2em;
+    margin: 0.5em 0 1.5em;
+  }
+  
+  .cta-button {
+    background-color: #ff7e5f;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 25px;
+  }
+  
+  .features-section {
+    background-color: #f8f8f8;
+    padding: 50px 20px;
+  }
+  
+  .features-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .feature {
+    flex: 1 1 30%;
+    margin: 10px;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .feature h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .about-section {
+    padding: 50px 20px;
+  }
+  
+  .about-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+  
+  .footer {
+    background: #182848;
+    color: white;
+    padding: 20px;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
