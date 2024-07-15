@@ -12,6 +12,11 @@ ARG gemini_key
 ENV PERSONAL_ACCESS_TOKEN_GITHUB=$PERSONAL_ACCESS_TOKEN_GITHUB
 ENV gemini_key=$gemini_key
 
+
+# Echo the environment variables (for debugging)
+RUN echo "PERSONAL_ACCESS_TOKEN_GITHUB=${PERSONAL_ACCESS_TOKEN_GITHUB}" && \
+    echo "gemini_key=${gemini_key}"
+
 # Copy the requirements file into the container at /app
 COPY requirements.txt .
 
