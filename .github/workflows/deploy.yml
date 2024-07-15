@@ -15,9 +15,10 @@ jobs:
 
       - name: Load .env file
         run: |
-          echo "GITHUB_PERSONAL_ACCESS_TOKEN=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }}" >> .env
+          echo "PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }}" >> .env
           echo "gemini_key=${{ secrets.gemini_key }}" >> .env
-          
+          cat .env # Print the contents of the .env file for debugging
+
 
 
       # Log in to Docker Hub
