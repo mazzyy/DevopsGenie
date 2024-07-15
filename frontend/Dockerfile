@@ -1,5 +1,5 @@
 # Use the official Node.js image from the Docker Hub
-FROM node:20-slim
+FROM node:20-slim AS build
 
 # Set the working directory in the container
 WORKDIR /app
@@ -18,7 +18,12 @@ RUN npm run build
 
 # Use a different base image for serving the app
 FROM nginx:alpine
-COPY --from=0 /app/build /usr/share/nginx/html
+
+# Copy the build output to Nginx's html directory
+COPY --from=build /app/build /usr/share/nginx/html
+
+# Copy custom Nginx configuration file
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port 3000
 EXPOSE 3000

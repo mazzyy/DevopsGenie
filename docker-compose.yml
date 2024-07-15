@@ -13,6 +13,6 @@ services:
     build:
       context: ./frontend
     ports:
-      - "80:80"
+      - "3000:3000"
     environment:
       - ENV_VAR=example
