@@ -9,7 +9,7 @@ ARG _PERSONAL_ACCESS_TOKEN_GITHUB
 ARG gemini_key
 
 # Set environment variables
-ENV GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PERSONAL_ACCESS_TOKEN
+ENV GITHUB_PERSONAL_ACCESS_TOKEN=$PERSONAL_ACCESS_TOKEN_GITHUB
 ENV gemini_key=$gemini_key
 
 # Copy the requirements file into the container at /app
