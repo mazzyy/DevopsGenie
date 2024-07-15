@@ -5,7 +5,7 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Build arguments
-ARG _PERSONAL_ACCESS_TOKEN_GITHUB
+ARG PERSONAL_ACCESS_TOKEN_GITHUB
 ARG gemini_key
 
 # Set environment variables
