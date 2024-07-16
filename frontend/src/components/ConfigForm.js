@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { solarizedlight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import './ConfigForm.css';
+import '../styles/ConfigForm.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import GitRepo from './GitRepo';

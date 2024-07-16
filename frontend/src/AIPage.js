@@ -12,6 +12,7 @@ const AIPage = () => {
   const initialFolderStructure = location.state?.folderStructure || {};
   const [userInput, setUserInput] = useState(initialInput);
   const [pipelineContent, setPipelineContent] = useState('');
+  const [explanation, setExplanation] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -28,7 +29,11 @@ const AIPage = () => {
     setError('');
     try {
       const response = await axios.post('http://localhost:8000/api/generate', { user_input: userInput });
-      setPipelineContent(response.data.pipeline_content);
+      const content = response.data.pipeline_content;
+      const explanationDelimiter = '**Explanation:**';
+      const [pipeline, explanation] = content.split(explanationDelimiter).map(str => str.trim());
+      setPipelineContent(pipeline);
+      setExplanation(explanationDelimiter + '\n' + explanation);
     } catch (error) {
       setError('Error generating pipeline. Please try again.');
       console.error("Error generating pipeline", error);
@@ -61,13 +66,9 @@ const AIPage = () => {
           placeholder="Describe your CI/CD requirements..."
           rows="5"
         />
-    <button type="submit"  onClick={handleSubmit}>Generate Pipeline</button>
+        <button type="submit" onClick={handleSubmit}>Generate Pipeline</button>
       </form>
-      <ClipLoader
-                        size={50}
-                        color={"#007bff"}
-                        loading={loading}
-                    />
+      <ClipLoader size={50} color={"#007bff"} loading={loading} />
       {loading && <p>Loading...</p>}
       {error && <p className="error">{error}</p>}
       {pipelineContent && (
@@ -82,13 +83,13 @@ const AIPage = () => {
               onChange={(e) => setPipelineContent(e.target.value)}
               rows={50}
               cols={80}
-              style={{ 
-                width: '100%', 
-                fontFamily: 'monospace', 
-                fontSize: '16px', // Match this to SyntaxHighlighter font size
-                backgroundColor: '#fdf6e3', 
-                color: '#657b83', 
-                border: '1px solid #ccc', 
+              style={{
+                width: '100%',
+                fontFamily: 'monospace',
+                fontSize: '16px',
+                backgroundColor: '#fdf6e3',
+                color: '#657b83',
+                border: '1px solid #ccc',
                 padding: '24px',
                 borderRadius: '5px'
               }}
@@ -98,6 +99,14 @@ const AIPage = () => {
               {pipelineContent}
             </SyntaxHighlighter>
           )}
+        </div>
+      )}
+      {explanation && (
+        <div className="explanation-display">
+          <h3>Pipeline Explanation:</h3>
+          <SyntaxHighlighter language="yaml" style={solarizedlight}>
+            {explanation}
+          </SyntaxHighlighter>
         </div>
       )}
       {initialFolderStructure && (

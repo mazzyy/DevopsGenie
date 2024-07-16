@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 import { ClipLoader } from 'react-spinners';
-import './GitRepo.css'; // Import the CSS file
+import '../styles/GitRepo.css'; // Import the CSS file
 
 function GitRepo() {
     const [owner, setOwner] = useState('');
