@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ConfigForm from './components/ConfigForm';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
-import AIPage from './AIPage';
+import AIPage from './pages/AIPage';
 import GitHubCallback from './components/GitHubCallback';
 import GitRepo from './components/GitRepo';
 
