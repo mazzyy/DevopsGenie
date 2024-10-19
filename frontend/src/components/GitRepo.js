@@ -22,7 +22,7 @@ function GitRepo() {
                 setLoading(true); // Start loading
                 try {
                     setError(null); // Reset previous errors
-                    const response = await axios.get(`http://localhost:8000/analyze_repo?owner=${owner}&repo=${repo}`);
+                    const response = await axios.get(`https://backend-184359031908.us-central1.run.app/analyze_repo?owner=${owner}&repo=${repo}`);
                     setAnalysis(response.data);
                 } catch (error) {
                     setAnalysis(null);
