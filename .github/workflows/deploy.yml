@@ -5,43 +5,48 @@ on:
     branches:
       - main
   workflow_dispatch:
- 
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout code
       - name: Checkout code
         uses: actions/checkout@v2
 
+      # Step 2: Load .env file
       - name: Load .env file
         run: |
           echo "PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }}" >> .env
           echo "gemini_key=${{ secrets.gemini_key }}" >> .env
           cat .env # Print the contents of the .env file for debugging
 
+      # Step 3: Authenticate to Google Cloud
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }} # The GCP service account key stored in GitHub repository secrets
 
+      # Step 4: Set up Google Cloud SDK
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}  # GCP project ID stored in GitHub secrets
 
-      # Log in to Docker Hub
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      # Step 5: Authenticate Docker to use Google Artifact Registry (GAR)
+      - name: Authenticate Docker with GAR
+        run: gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
 
-      # Backend
-      - name: Build backend Docker image
+      # Step 6: Build the Docker image
+      - name: Build Docker image
         run: |
           cd backend
-          docker build --build-arg PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} --build-arg gemini_key=${{ secrets.gemini_key }} -t musawar96/devopsgenie:backend-latest .
-      
-      - name: Push backend Docker image
-        run: |
-          docker push musawar96/devopsgenie:backend-latest
+          docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/backend:v1.1 \
+            --build-arg gemini_key=${{ secrets.OPENAI_API_KEY }} \
+            --build-arg PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} .
 
-      # Frontend
-      - name: Build frontend Docker image
+      # Step 7: Push Docker image to GAR
+      - name: Push Docker image to GAR
         run: |
-          cd frontend
-          docker build -t musawar96/devopsgenie:frontend-latest .
-
-      - name: Push frontend Docker image
-        run: |
-          docker push musawar96/devopsgenie:frontend-latest
+          docker push us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/backend:v1.1
