@@ -42,7 +42,7 @@ jobs:
       - name: Build backend Docker image
         run: |
           cd backend
-          docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/backend:v1.1 \
+          docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/backend:latest \
             --build-arg gemini_key=${{ secrets.gemini_key }} \
             --build-arg PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} .
 
@@ -50,16 +50,16 @@ jobs:
       - name: Build frontend Docker image
         run: |
           cd frontend
-          docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:v1.1 \
+          docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:latest \
             --build-arg gemini_key=${{secrets.gemini_key }} \
             --build-arg PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} .
 
       # Step 8: Push backend Docker image to GAR
       - name: Push backend Docker image to GAR
         run: |
-          docker push us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/backend:v1.1
+          docker push us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/backend:latest
 
       # Step 9: Push frontend Docker image to GAR
       - name: Push frontend Docker image to GAR
         run: |
-          docker push us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:v1.1
+          docker push us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:latest
