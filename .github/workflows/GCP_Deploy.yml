@@ -63,3 +63,12 @@ jobs:
       - name: Push frontend Docker image to GAR
         run: |
           docker push us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:latest
+
+
+      - name: Deploy frontend to Cloud Run
+        run: |
+          gcloud run deploy personal-gpt-gemini-toolkit \
+            --image us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:latest \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated
