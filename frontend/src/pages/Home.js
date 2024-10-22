@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className="homepage">
       <header className="hero-section">
-        <h1>DevOps Automation with AI</h1>
+        <h1>DevOps Automation with AI :)</h1>
         <p>Streamline your CI/CD pipelines and Could servies with advanced AI-driven automation.</p>
         <button className="cta-button">Get Started</button>
       </header>
