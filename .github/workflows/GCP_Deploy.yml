@@ -38,7 +38,7 @@ jobs:
       - name: Authenticate Docker with GAR
         run: gcloud auth configure-docker us-east1-docker.pkg.dev --quiet
 
-      # Step 6: Build backend Docker image
+       # Step 6: Build backend Docker image
       - name: Build backend Docker image
         run: |
           cd backend
@@ -46,16 +46,17 @@ jobs:
             --build-arg gemini_key=${{ secrets.gemini_key }} \
             --build-arg PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} \
             --build-arg ENVIRONMENT=${{ secrets.ENVIRONMENT }} \
-            --build-arg FRONTEND_URL=${{ secrets.FRONTEND_URL }}.
+            --build-arg FRONTEND_URL=${{ secrets.FRONTEND_URL }} .
+
 
       # Step 7: Build frontend Docker image (navigate back to root first)
       - name: Build frontend Docker image
         run: |
           cd frontend
           docker build -t us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:latest \
-            --build-arg gemini_key=${{secrets.gemini_key }} \
+            --build-arg gemini_key=${{ secrets.gemini_key }} \
             --build-arg PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }} \
-            --build-arg REACT_APP_BASE_URL=${{secrets.REACT_APP_BASE_URL }} .
+            --build-arg REACT_APP_BASE_URL=${{ secrets.REACT_APP_BASE_URL }} .
 
       # Step 8: Push backend Docker image to GAR
       - name: Push backend Docker image to GAR
