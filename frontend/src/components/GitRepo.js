@@ -18,7 +18,7 @@ function GitRepo() {
     // Debounced fetch function
     const fetchAnalysis = useCallback(
         debounce(async (owner, repo) => {
-               
+            console.log(owner, repo);   
             if (owner && repo) {
                 setLoading(true); // Start loading
                 let url = `${process.env.REACT_APP_BASE_URL}/analyze_repo?owner=${owner}&repo=${repo}`;

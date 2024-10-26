@@ -30,7 +30,8 @@ const AIPage = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.post('http://localhost:8000/api/generate', { user_input: userInput });
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/generate`, { user_input: userInput });
+
       const content = response.data.pipeline_content;
       const explanationDelimiter = '**Explanation:**';
       const [pipeline, explanation] = content.split(explanationDelimiter).map(str => str.trim());
