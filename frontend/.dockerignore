@@ -4,4 +4,4 @@ npm-debug.log
 build/
 
 # Ignore local environment files
-.env
+
