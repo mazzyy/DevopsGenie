@@ -16,6 +16,7 @@ genai.configure(api_key=os.getenv("gemini_key"))
 @ai_router.post("/api/generate")
 async def generate_pipeline(user_input: UserInput):
     try:
+        print("inside generate_function")
         model = genai.GenerativeModel('gemini-1.5-flash')
         
         # Generate the content based on the user input
