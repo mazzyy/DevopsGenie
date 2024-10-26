@@ -1,12 +1,12 @@
 import React from 'react';
 // import './Home.css';
 import "../styles/Home.css";
-
+console.log("process.env.REACT_APP_BASE_URL", process.env.REACT_APP_BASE_URL);
 const Home = () => {
   return (
     <div className="homepage">
       <header className="hero-section">
-        <h1>DevOps Automation with AI :).  </h1>
+        <h1>DevOps Automation with AI :). ${process.env.REACT_APP_BASE_URL}  </h1>
         <p>Streamline your CI/CD pipelines and Could servies with advanced AI-driven automation.</p>
         <button className="cta-button">Get Started</button>
       </header>
