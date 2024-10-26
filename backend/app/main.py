@@ -13,11 +13,11 @@ app = FastAPI()
 
 # print(os.getenv("GITHUB_PERSONAL_ACCESS_TOKEN"))
 # Allow origins, using environment variable
-origins = [os.getenv("FRONTEND_URL"), "http://localhost:3000"]
+# origins = [os.getenv("FRONTEND_URL"), "http://localhost:3000"]
 app.add_middleware(
     CORSMiddleware,
     # allow_origins=["http://localhost:3000"],  # Adjust this if necessary
-    allow_origins=origins,  # Adjust this if necessary
+    allow_origins=["*"],  # Adjust this if necessary
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
