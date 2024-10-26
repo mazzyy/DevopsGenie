@@ -14,7 +14,7 @@ function GitHubCallback() {
   useEffect(() => {
     const code = query.get('code');
     if (code) {
-      axios.get(`https://backend-184359031908.us-central1.run.app/github/callback?code=${code}`)
+      axios.get(`${process.env.REACT_APP_BASE_URL}/github/callback?code=${code}`)
         .then(response => {
           setUserInfo(response.data.user_info);
         })

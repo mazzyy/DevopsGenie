@@ -103,7 +103,7 @@ const ConfigForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/generate', {
+      const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/generate`, {
         repo_url: repoUrl,
         language,
         language_version: useCustomVersion ? customLanguageVersion : languageVersion,

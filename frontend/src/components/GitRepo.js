@@ -18,12 +18,17 @@ function GitRepo() {
     // Debounced fetch function
     const fetchAnalysis = useCallback(
         debounce(async (owner, repo) => {
+               
             if (owner && repo) {
                 setLoading(true); // Start loading
+                let url = `${process.env.REACT_APP_BASE_URL}/analyze_repo?owner=${owner}&repo=${repo}`;
+                console.log(url);
                 try {
+                    // console.log(process.env.REACT_APP_BASE_URL   /* .env.REACT_APP_BASE_URL */);
                     setError(null); // Reset previous errors
-                    const response = await axios.get(`https://backend-184359031908.us-central1.run.app/analyze_repo?owner=${owner}&repo=${repo}`);
+                    const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/analyze_repo?owner=${owner}&repo=${repo}`);
                     setAnalysis(response.data);
+                    // console.log(url);
                 } catch (error) {
                     setAnalysis(null);
                     setError(error.response ? error.response.data.detail : 'Error analyzing repo');

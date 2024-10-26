@@ -3,8 +3,9 @@ import '../styles/Navbar.css';
 
 const Navbar = () => {
   const handleLogin = () => {
-      window.location.href = 'http://localhost:8000/login';
+      window.location.href = '${process.env.REACT_APP_BASE_URL}/login';
     };
+    
 
 
   return (
@@ -19,6 +20,7 @@ const Navbar = () => {
         <a href="#docker-automation">Docker Automation</a>
         <a href="#devops-options">Other DevOps Options</a>
         <a className='Float:right' href="/login" >login</a>
+        <a href="devops-options">Other DevOps Options</a>
         {/* <a className='Float:right' href="#devops-options" onClick={handleLogin}>login</a> */}
       </nav>
     </div>

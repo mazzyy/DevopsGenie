@@ -67,8 +67,16 @@ jobs:
 
       - name: Deploy frontend to Cloud Run
         run: |
-          gcloud run deploy personal-gpt-gemini-toolkit \
+          gcloud run deploy devopsgeni-frontend \
             --image us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/frontend:latest \
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated
+
+      - name: Deploy frontend to Cloud Run
+        run: |
+          gcloud run deploy devopsgeni-baackend \
+            --image us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/devopsgeni/backend:latest \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated    

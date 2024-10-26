@@ -42,6 +42,7 @@ def fetch_folder_structure(owner: str, repo: str, path=""):
 @router.get("/analyze_repo", response_model=RepoAnalysis)
 async def analyze_repo(owner: str, repo: str):
     try:
+        print("testing")
         repo_url = f"https://api.github.com/repos/{owner}/{repo}"
         languages_url = f"{repo_url}/languages"
         
