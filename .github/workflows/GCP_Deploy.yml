@@ -20,7 +20,9 @@ jobs:
         run: |
           echo "PERSONAL_ACCESS_TOKEN_GITHUB=${{ secrets.PERSONAL_ACCESS_TOKEN_GITHUB }}" >> .env
           echo "gemini_key=${{ secrets.gemini_key }}" >> .env
+          echo "REACT_APP_BASE_URL is set to: ${{ secrets.REACT_APP_BASE_URL }}" >> .env
           cat .env # Print the contents of the .env file for debugging
+
 
       # Step 3: Authenticate to Google Cloud
       - name: Authenticate to Google Cloud
