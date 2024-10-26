@@ -28,10 +28,11 @@ const AIPage = () => {
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
     setLoading(true);
+    console.log(`${process.env.REACT_APP_BASE_URL}`)
     setError('');
     try {
       const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/api/generate`, { user_input: userInput });
-
+      console.log(response.data);
       const content = response.data.pipeline_content;
       const explanationDelimiter = '**Explanation:**';
       const [pipeline, explanation] = content.split(explanationDelimiter).map(str => str.trim());
